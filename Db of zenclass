@@ -1,0 +1,58 @@
+--database
+
+create database zenclass;
+
+use zenclass;
+
+--students
+
+create table students(id integer(100),name varchar(100),email varchar(100));
+
+ insert into students(id,name,email) values (1,"joyce","jc.getjoy@gmail.com"),(2,"sarah","sarah@gmail.com"),(3,"paul","paul@gmail.com"),(4,"josiah","jose@gmail.com"),(5,"job","job@gmail.com");
+ 
+ select * from students;
+ 
+ alter table students modify id integer primary key;
+ 
+ --mentors
+ 
+ create table mentors(mentor_id integer(100),mentor_name varchar(100),noOfStudents integer(100));
+ 
+ insert into mentors(mentor_id,mentor_name,noOfStudents) values (61,"Mr.a",40),(62,"Mr.s",50),(63,"Mr.d",44),(64,"Mr.f",38),(65,"Mr.g",54);
+
+--codekata
+
+ create table codekata(student_id integer(100),noOfPblmsSolved integer(100), foreign key(student_id) references students(id));
+
+  insert into codekata(student_id,noOfPblmsSolved) values (1,142),(2,110),(3,121),(4,101),(5,139);
+
+--attendance
+  
+   create table attendance(stu_id integer(100),NoOfDaysAttd integer(100),foreign key(stu_id) references students(id));
+
+  insert into attendance(stu_id,NoOfDaysAttd) values (1,50),(2,46),(3,48),(4,40),(5,50);
+
+--tasks
+
+create table tasks(date integer(100),task varchar(200));
+
+   insert into tasks(date,task) values (2021-09-12,"design a html form"), (2021-09-15,"crud using axios"), (2021-09-24,"CRUD operation on an API"), (2021-10-02,"do MRF for the given array"), (2021-10-12,"pagination");
+
+--students_task_submission_list
+   
+  create table students_task_submission_list(id integer(100),noOfTasksSub integer(100),foreign key(id) references students(id));
+
+  insert into students_task_submission_list(id,noOfTasksSub) values (1,4),(2,4),(3,5),(4,4),(5,3);
+
+--courses
+
+ create table courses (courseID integer primary key,courseName varchar(100));
+
+ insert into courses values(1,"full stack developer"),(2,"c language"),(3,"java"),(4,"python"),(5,"data science");
+
+--company_drives
+
+ create table company_drives (companyID integer primary key,companyName varchar(100));
+
+insert into company_drives (companyID,companyName)values (1,"zoho"),(2,"paypal"),(3,"tcs"),(4,"cts"),(5,"infosys"); 
+ 
